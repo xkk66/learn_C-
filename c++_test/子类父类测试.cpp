@@ -331,11 +331,23 @@ void show_base (base_3<T> a)
 cout<< a.a <<endl;
 
 }
- int main()
+
+template <class T>
+class base_4
+{
+public:
+base_4 (T a):a(a)
+{
+
+
+}
+
+private:
+T a;
+};
+int main()
 
  {
-base_3 <int> a(100);
-show_base(a);
 
 
  }
