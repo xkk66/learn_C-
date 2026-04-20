@@ -87,7 +87,33 @@ int ins_data_shunxu(Data *ptr ,Data_Type data)
 	return ptr->Last; // 插入成功
 }
 
+int del_data(Data *ptr ,Data_Type data)
+{
+	if(ptr==NULL)
+	{
+		printf("顺序表为空\n");
+		return 0; // 删除失败
+	}
+// 0  1 2 3 4 5 6 7 8 9 10
+// 11 4 2 1 
 
+
+	for(int i=0;i<ptr->Last;i++)
+	{
+		if(ptr->Data_Enter[i]==data)
+		{
+			printf("找到要删除的元素%d\n", i);
+			for(int j=i;j<ptr->Last-1;j++)
+			{
+				ptr->Data_Enter[j] = ptr->Data_Enter[j+1];
+				printf("ptr->Data_Enter[%d] = %d\n", j, ptr->Data_Enter[j]);
+			}
+			printf("ptr->Data_Enter[%d] = %d\n", 1, ptr->Data_Enter[1]);
+			ptr->Last--;
+			return ptr->Last; // 删除成功
+		}
+	}
+}
 
 
 void show(Data *ptr)
@@ -120,6 +146,7 @@ int main()
 	ins_data_shunxu(ptr,11);
     ins_data_shunxu(ptr,3);
 	show(ptr);
+	del_data(ptr,5);
 	printf("%d",ptr->Last);
 
 }
